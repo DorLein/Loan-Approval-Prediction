@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='images/bank_background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: 'Roboto', sans-serif;
+            background-color: #eef2f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .result-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 450px;
+            transition: transform 0.3s ease;
+        }
+
+        .result-container:hover {
+            transform: translateY(-10px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-bottom: 25px;
+        }
+
+        .reason {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #555;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .reason strong {
+            display: block;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin: 0;
+            padding: 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid #4a90e2;
+            padding: 12px 20px;
+            border-radius: 6px;
+            background-color: #4a90e2;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #357abd;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>{{ prediction_text }}</h1>
+        <div class="reason">
+            <strong>Reasons:</strong>
+            <ul>
+                {% for reason in reasons %}
+                    <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
